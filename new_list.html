@@ -1,10 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "news/base.html" %}
+
+{% block title %}Список новостей{% endblock %}
+
+{% block content %}
+<h2>Последние новости</h2>
+<ul>
+    {% for item in news %}
+        <li>
+            <a href="{% url 'news_detail' item.id %}">{{ item.title }}</a> 
+            <span>({{ item.created_at|date:"d.m.Y" }})</span>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

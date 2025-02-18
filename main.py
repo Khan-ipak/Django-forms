@@ -1,16 +1,10 @@
-# This is a sample Python script.
+from django.shortcuts import render, get_object_or_404
+from .models import News, NewsCategory
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+def news_list(request):
+    news = News.objects.all().order_by('-created_at')
+    return render(request, 'news/news_list.html', {'news': news})
 
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+def news_detail(request, news_id):
+    news_item = get_object_or_404(News, id=news_id)
+    return render(request, 'news/news_detail.html', {'news_item': news_item})

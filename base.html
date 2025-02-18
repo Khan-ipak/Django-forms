@@ -1,10 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>{% block title %}Новости{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
 </head>
 <body>
-$END$
+    <header>
+        <h1><a href="{% url 'news_list' %}">Новостной сайт</a></h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="{% url 'news_list' %}">Главная</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Новостной сайт</p>
+    </footer>
 </body>
 </html>

@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "news/base.html" %}
+
+{% block title %}{{ news_item.title }}{% endblock %}
+
+{% block content %}
+<h2>{{ news_item.title }}</h2>
+<p>{{ news_item.content }}</p>
+<p><strong>Дата:</strong> {{ news_item.created_at|date:"d.m.Y H:i" }}</p>
+<a href="{% url 'news_list' %}">Назад к новостям</a>
+{% endblock %}
